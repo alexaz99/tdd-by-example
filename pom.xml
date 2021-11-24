@@ -40,7 +40,9 @@
         <java.version>11</java.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
-        <junit-platform.version>5.3.1</junit-platform.version>
+        <junit-platform.version>5.8.0</junit-platform.version>
+        <!--<junit-platform.version>5.3.1</junit-platform.version>-->
+        <!--<junit.jupiter.version>5.8.0</junit.jupiter.version>-->
     </properties>
 
     <dependencies>
@@ -56,6 +58,19 @@
             <version>${junit-platform.version}</version>
             <scope>test</scope>
         </dependency>
+<!--        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-params</artifactId>
+            <version>5.7.2</version>
+            <scope>test</scope>
+        </dependency>-->
+
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-params</artifactId>
+            <version>${junit-platform.version}</version>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -65,10 +80,13 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.0</version>
             </plugin>
+
+            <!-- Has JUnit 5 support build in -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.22.0</version>
+                <!-- Recommended config for maven and Java 11. Not sure if we needed -->
                 <configuration>
                     <argLine>
                         --illegal-access=permit
