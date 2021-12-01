@@ -3,10 +3,10 @@ package guru.springframework;
 /**
  * Class to test.
  */
-public class Dollar {
+public class Dollar_First {
     private int amount;
 
-    public Dollar(int amount) {
+    public Dollar_First(int amount) {
         this.amount = amount;
     }
 
