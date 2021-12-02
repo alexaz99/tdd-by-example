@@ -27,6 +27,7 @@ public class Money implements Expression {
                 && this.currency == money.currency;
     }
 
+    @Override
     public Money reduce(String to) {
         return this;
     }
@@ -44,7 +45,8 @@ public class Money implements Expression {
     }
 
     public Expression plus(Money addend) {
-        return new Money(amount + addend.amount, currency);
+        //return new Money(amount + addend.amount, currency);
+        return new Sum(this, addend);
     }
 }
 
