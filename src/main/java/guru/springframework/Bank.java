@@ -5,7 +5,7 @@ import java.util.Objects;
 
 public class Bank {
 
-    /** Keep a hashmap of pairs and rates */
+    /** Keep a hashmap of currency pairs and rates */
     private HashMap<Pair, Integer> rateMap = new HashMap<>();
 
     Money reduce(Expression source, String toCurrency) {
@@ -16,6 +16,7 @@ public class Bank {
         Objects.requireNonNull(from);
         Objects.requireNonNull(to);
 
+        // if currency pair are equals, return 1!
         if (from.equals(to)) {
             return 1;
         }

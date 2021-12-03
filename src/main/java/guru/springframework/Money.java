@@ -29,10 +29,16 @@ public class Money implements Expression {
 
     @Override
     public Money reduce(Bank bank, String to) {
-        //return this;
-        // first do rate conversion
-        int rate = (currency.equals("CHF") && to.equals("USD")) ? 2 : 1;
-        return new Money(amount / rate, to);
+        // first draft
+/*        return this;*/
+
+        // second draft
+        // do rate conversion
+/*        int rate = (currency.equals("CHF") && to.equals("USD")) ? 2 : 1;
+        return new Money(amount / rate, to);*/
+
+        // the latest. Get rate from a bank
+        return new Money(amount / bank.rate(this.currency, to), to);
     }
 
     public Money times(int multiplier) {
