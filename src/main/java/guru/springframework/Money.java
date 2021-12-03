@@ -27,6 +27,10 @@ public class Money implements Expression {
                 && this.currency == money.currency;
     }
 
+    /**
+     * Should pass a Bank to get a currency pair rate
+     * This is where conversion happens
+     */
     @Override
     public Money reduce(Bank bank, String to) {
         // first draft
@@ -41,11 +45,11 @@ public class Money implements Expression {
         return new Money(amount / bank.rate(this.currency, to), to);
     }
 
-    public Money times(int multiplier) {
+    public Expression times(int multiplier) {
         return new Money(amount * multiplier, this.currency);
     }
 
-    public Expression plus(Money addend) {
+    public Expression plus(Expression addend) {
         //return new Money(amount + addend.amount, currency);
         return new Sum(this, addend);
     }
