@@ -13,11 +13,11 @@ public class Money implements Expression {
         return currency;
     }
 
-    public static Money dollar(int amount){
+    public static Money dollar(int amount) {
         return new Money(amount, "USD");
     }
 
-    public static Money franc(int amount){
+    public static Money franc(int amount) {
         return new Money(amount, "CHF");
     }
 
@@ -34,7 +34,7 @@ public class Money implements Expression {
     @Override
     public Money reduce(Bank bank, String to) {
         // first draft
-/*        return this;*/
+        /*        return this;*/
 
         // second draft
         // do rate conversion

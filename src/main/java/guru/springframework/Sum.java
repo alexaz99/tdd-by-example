@@ -6,8 +6,8 @@ package guru.springframework;
  */
 public class Sum implements Expression {
     /**
-     *  We do action on Money.
-     *  Replace Money object with expression
+     * We do action on Money.
+     * Replace Money object with expression
      */
     Expression augmend;
     Expression addmend;

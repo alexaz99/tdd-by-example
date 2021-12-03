@@ -5,7 +5,9 @@ import java.util.Objects;
 
 public class Bank {
 
-    /** Keep a hashmap of currency pairs and rates */
+    /**
+     * Keep a hashmap of currency pairs and rates
+     */
     private final HashMap<Pair, Integer> rateMap = new HashMap<>();
 
     Money reduce(Expression source, String toCurrency) {
