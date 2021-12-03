@@ -8,9 +8,6 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 public class MoneyTest {
 
-    /**
-     * Consolidate Tests
-     */
     @Test
     void testEquality() {
         int amount = 5;
@@ -24,9 +21,6 @@ public class MoneyTest {
         assertNotEquals(Money.franc(8), Money.franc(amount));
     }
 
-    /**
-     * Consolidate Tests
-     */
     @Test
     void testMultiplication() {
         Money five = Money.dollar(5);
@@ -37,9 +31,6 @@ public class MoneyTest {
         assertEquals(Money.franc(10), fiveF.times(2));
         assertEquals(Money.franc(15), fiveF.times(3));
     }
-    //----------------------------------------------
-    //- End consolidated tests
-    //----------------------------------------------
 
     @Test
     void testCurrency() {
