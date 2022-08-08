@@ -9,6 +9,7 @@ public class MoneyTest {
 
     @Test
     void testMutliplication() {
+
 /*        Dollar five = new Dollar(5);
         five.times(2);
         assertEquals(10, five.amount);*/
