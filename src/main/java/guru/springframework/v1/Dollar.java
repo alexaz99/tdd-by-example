@@ -1,4 +1,4 @@
-package guru.springframework;
+package guru.springframework.v1;
 
 public class Dollar {
 
@@ -9,6 +9,6 @@ public class Dollar {
     }
 
     void times(int multiplier) {
-
+        this.amount *= multiplier;
     }
 }
