@@ -1,4 +1,4 @@
-package guru.springframework.v4;
+package guru.springframework.v5;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -17,7 +17,13 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
  *         amount should be private, and then we compare the whole Dollar object in testMutliplication method.
  *         Everything is maintained inside the Dollar object.
  * 5. v4 - Refactory by introducing ancestor Money class and move common functionality there.
+ *
  * 6. v4 - Now we are going to  make sure that 5 dollars does not equals 5 francs.
+ * 7. v5. Goal is to refactor them out of existence.
+ *        Remove product variable and make the test cleaner.
+ *
+ * 8. v5. Create a factory method on Money to return Dollars and Francs.
+ * 9. We will reduce direct references to subclasses.
  */
 public class MoneyTest {
 
@@ -25,25 +31,23 @@ public class MoneyTest {
     // 2. Add real equality for Dollar object by introducing equals and hashcode methods
     @Test
     void testMutliplicationDollar() {
-        Dollar five = new Dollar(5);
-        Dollar product = five.times(2);
-        assertEquals(new Dollar(10), product);
-        product = five.times(3);
-        assertEquals(new Dollar(15), product);
+        Dollar five = Money.dollar(5);
+        assertEquals(Money.dollar(10), five.times(2));
+        assertEquals(Money.dollar(15), five.times(3));
     }
 
     @Test
     void testEqualityDollar() {
-        assertEquals(new Dollar(5), new Dollar(5));
-        assertNotEquals(new Dollar(5), new Dollar(8));
-        assertNotEquals(new Dollar(5), new Franc(5));
+        assertEquals(Money.dollar(5), Money.dollar(5));
+        assertNotEquals(Money.dollar(5), Money.dollar(8));
+        assertNotEquals(Money.dollar(5), Money.franc(5));
     }
 
     @ParameterizedTest(name = "{0}")
     @DisplayName("Should validate Dollar equality")
     @ValueSource(ints = {2, 3, 4, 5, 8, 14})
     void testEqualityDollar(int amount) {
-        assertEquals(new Dollar(amount), new Dollar(amount));
+        assertEquals(Money.dollar(amount), Money.dollar(amount));
     }
 
     //----------------------------------------------------------
@@ -51,18 +55,16 @@ public class MoneyTest {
     //----------------------------------------------------------
     @Test
     void testMutliplicationFrank() {
-        Franc five = new Franc(5);
-        Franc product = five.times(2);
-        assertEquals(new Franc(10), product);
-        product = five.times(3);
-        assertEquals(new Franc(15), product);
+        Franc five = Money.franc(5);
+        assertEquals(Money.franc(10), five.times(2));
+        assertEquals(Money.franc(15), five.times(3));
     }
 
     @Test
     void testEquiltyFranc() {
-        assertEquals(new Franc(5), new Franc(5));
-        assertNotEquals(new Franc(5), new Franc(8));
-        assertNotEquals(new Franc(8), new Dollar(8));
+        assertEquals(Money.franc(5), Money.franc(5));
+        assertNotEquals(Money.franc(5), Money.franc(8));
+        assertNotEquals(Money.franc(8), Money.dollar(8));
     }
 
 }

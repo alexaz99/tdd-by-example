@@ -6,6 +6,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 /**
  * 1. v2 - Remove mutation by checking times() for validity.
@@ -35,6 +36,7 @@ public class MoneyTest {
     @Test
     void testEqualityDollar() {
         assertEquals(new Dollar(5), new Dollar(5));
+        assertNotEquals(new Dollar(5), new Dollar(8));
     }
 
     @ParameterizedTest(name = "{0}")
@@ -59,6 +61,7 @@ public class MoneyTest {
     @Test
     void testEquiltyFranc() {
         assertEquals(new Franc(5), new Franc(5));
+        assertNotEquals(new Franc(5), new Franc(8));
     }
 
 }
