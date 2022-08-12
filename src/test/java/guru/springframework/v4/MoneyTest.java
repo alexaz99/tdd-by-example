@@ -1,4 +1,4 @@
-package guru.springframework.v3;
+package guru.springframework.v4;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -15,6 +15,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * 4. v3 - Added privacy for Dollar object.
  *         amount should be private, and then we compare the whole Dollar object in testMutliplication method.
  *         Everything is maintained inside the Dollar object.
+ * 5. v4 - Refactory by introducing ancestor Money class and move common functionality there.
+ *
+ * 6. v4 - Now we are going to  make sure that 5 dollars does not equals 5 francs.
  */
 public class MoneyTest {
 
@@ -25,9 +28,6 @@ public class MoneyTest {
         Dollar five = new Dollar(5);
         Dollar product = five.times(2);
         assertEquals(new Dollar(10), product);
-
-        // Do re-factoring due to mutating side effect.
-        // Should create a new Dollar object
         product = five.times(3);
         assertEquals(new Dollar(15), product);
     }
