@@ -1,4 +1,4 @@
-package guru.springframework.v8;
+package guru.springframework.v9;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -29,7 +29,6 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
  * 9. v6 - Add currency support.
  *    The final goal is to get rid of 2 subclasses
  * 10. v7 - Move times to Money class
- * 11. v8. Remove Dollar and Frank subclasses with re-factoring.
  */
 public class MoneyTest {
 
