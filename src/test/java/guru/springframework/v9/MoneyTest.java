@@ -29,6 +29,12 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
  * 9. v6 - Add currency support.
  *    The final goal is to get rid of 2 subclasses
  * 10. v7 - Move times to Money class
+ * 11. v8 - Removed completely Dollar and Frank classes and everything is in Money class.
+ * 12. v9.- Do addition of different currencies.
+ *          Add a new test case => void testSimpleAddition().
+ *          Add basic classes and interfaces.
+ *
+ *
  */
 public class MoneyTest {
 
@@ -82,5 +88,17 @@ public class MoneyTest {
     void testCurrency() {
         assertEquals("USD", Money.dollar(1).currency());
         assertEquals("CHF", Money.franc(1).currency());
+    }
+
+    /**
+     * New test case
+     */
+    @Test
+    void testSimpleAddition() {
+        Money five = Money.dollar(5);
+        Expression sum = five.plus(five);
+        Bank bank = new Bank();
+        Money reduced = bank.reduce(sum, "USD");
+        assertEquals(Money.dollar(10), reduced);
     }
 }
