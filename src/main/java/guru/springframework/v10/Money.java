@@ -22,8 +22,9 @@ public class Money implements Expression {
         return new Money(amount * multiplier, this.currency);
     }
 
-    public Expression plus(Money add) {
-        return new Money(amount + add.amount, currency);
+    public Expression plus(Money addend) {
+        //return new Money(amount + add.amount, currency);
+        return new Sum(this, addend);
     }
 
     protected String currency() {
@@ -36,6 +37,11 @@ public class Money implements Expression {
 
     public static Money franc(int amount) {
         return new Money(amount, "CHF");
+    }
+
+    @Override
+    public Money reduce(String to) {
+        return this;
     }
 
     @Override
