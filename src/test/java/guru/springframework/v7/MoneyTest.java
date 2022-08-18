@@ -28,6 +28,7 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
  *      We will reduce direct references to subclasses.
  * 9. v6 - Add currency support.
  *    The final goal is to get rid of 2 subclasses
+ *
  * 10. v7 - Move times to Money class
  */
 public class MoneyTest {
