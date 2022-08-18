@@ -1,8 +1,5 @@
 package guru.springframework.v10;
 
-import guru.springframework.v9.Bank;
-import guru.springframework.v9.Expression;
-import guru.springframework.v9.Money;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -47,28 +44,28 @@ public class MoneyTest {
     // 2. Add real equality for Dollar object by introducing equals and hashcode methods
     @Test
     void testMutliplicationDollar() {
-        guru.springframework.v9.Money five = guru.springframework.v9.Money.dollar(5);
+        Money five = Money.dollar(5);
         //Dollar five = Money.dollar(5);
-        assertEquals(guru.springframework.v9.Money.dollar(10), five.times(2));
-        assertEquals(guru.springframework.v9.Money.dollar(15), five.times(3));
+        assertEquals(Money.dollar(10), five.times(2));
+        assertEquals(Money.dollar(15), five.times(3));
     }
 
     @Test
     void testEqualityDollar() {
-        assertEquals(guru.springframework.v9.Money.dollar(5), guru.springframework.v9.Money.dollar(5));
-        assertNotEquals(guru.springframework.v9.Money.dollar(5), guru.springframework.v9.Money.dollar(8));
+        assertEquals(Money.dollar(5), Money.dollar(5));
+        assertNotEquals(Money.dollar(5), Money.dollar(8));
 
-        assertEquals(guru.springframework.v9.Money.franc(5), guru.springframework.v9.Money.franc(5));
-        assertNotEquals(guru.springframework.v9.Money.franc(5), guru.springframework.v9.Money.franc(8));
+        assertEquals(Money.franc(5), Money.franc(5));
+        assertNotEquals(Money.franc(5), Money.franc(8));
 
-        assertNotEquals(guru.springframework.v9.Money.dollar(5), guru.springframework.v9.Money.franc(5));
+        assertNotEquals(Money.dollar(5), Money.franc(5));
     }
 
     @ParameterizedTest(name = "{0}")
     @DisplayName("Should validate Dollar equality")
     @ValueSource(ints = {2, 3, 4, 5, 8, 14})
     void testEqualityDollar(int amount) {
-        assertEquals(guru.springframework.v9.Money.dollar(amount), guru.springframework.v9.Money.dollar(amount));
+        assertEquals(Money.dollar(amount), Money.dollar(amount));
     }
 
     //----------------------------------------------------------
@@ -76,23 +73,23 @@ public class MoneyTest {
     //----------------------------------------------------------
     @Test
     void testMutliplicationFrank() {
-        guru.springframework.v9.Money five = guru.springframework.v9.Money.franc(5);
+        Money five = Money.franc(5);
         //Franc five = Money.franc(5);
-        assertEquals(guru.springframework.v9.Money.franc(10), five.times(2));
-        assertEquals(guru.springframework.v9.Money.franc(15), five.times(3));
+        assertEquals(Money.franc(10), five.times(2));
+        assertEquals(Money.franc(15), five.times(3));
     }
 
     @Test
     void testEquiltyFranc() {
-        assertEquals(guru.springframework.v9.Money.franc(5), guru.springframework.v9.Money.franc(5));
-        assertNotEquals(guru.springframework.v9.Money.franc(5), guru.springframework.v9.Money.franc(8));
-        assertNotEquals(guru.springframework.v9.Money.franc(8), guru.springframework.v9.Money.dollar(8));
+        assertEquals(Money.franc(5), Money.franc(5));
+        assertNotEquals(Money.franc(5), Money.franc(8));
+        assertNotEquals(Money.franc(8), Money.dollar(8));
     }
 
     @Test
     void testCurrency() {
-        assertEquals("USD", guru.springframework.v9.Money.dollar(1).currency());
-        assertEquals("CHF", guru.springframework.v9.Money.franc(1).currency());
+        assertEquals("USD", Money.dollar(1).currency());
+        assertEquals("CHF", Money.franc(1).currency());
     }
 
     /**
@@ -100,10 +97,10 @@ public class MoneyTest {
      */
     @Test
     void testSimpleAddition() {
-        guru.springframework.v9.Money five = guru.springframework.v9.Money.dollar(5);
+        Money five = Money.dollar(5);
         Expression sum = five.plus(five);
-        guru.springframework.v9.Bank bank = new Bank();
-        guru.springframework.v9.Money reduced = bank.reduce(sum, "USD");
+        Bank bank = new Bank();
+        Money reduced = bank.reduce(sum, "USD");
         assertEquals(Money.dollar(10), reduced);
     }
 }
