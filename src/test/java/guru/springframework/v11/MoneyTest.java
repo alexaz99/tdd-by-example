@@ -36,7 +36,8 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
  *          Add basic classes and interfaces and make test green by hardcoding
  * 13. v10. Make it working
  *
- * 14. v11 - Make changes
+ * 14. v11 - Make changes. Reduce money with the conversion
+ *          New test method testReduceMoneyDifferentCurrency
  *
  *
  */
@@ -47,7 +48,6 @@ public class MoneyTest {
     @Test
     void testMutliplicationDollar() {
         Money five = Money.dollar(5);
-        //Dollar five = Money.dollar(5);
         assertEquals(Money.dollar(10), five.times(2));
         assertEquals(Money.dollar(15), five.times(3));
     }
@@ -128,5 +128,19 @@ public class MoneyTest {
         Bank bank = new Bank();
         Money result = bank.reduce(Money.dollar(1), "USD");
         assertEquals(Money.dollar(1), result);
+    }
+
+    @Test
+    void testReduceMoneyDifferentCurrency() {
+        Bank bank = new Bank();
+        bank.addRate("CHF", "USD", 2);
+        Money result = bank.reduce(Money.franc(2), "USD");
+        assertEquals(Money.dollar(1), result);
+    }
+
+    @Test
+    void testIdentityRate() {
+        assertEquals(1, new Bank().rate("USD", "USD"));
+        assertEquals(1, new Bank().rate("CHF", "CHF"));
     }
 }
